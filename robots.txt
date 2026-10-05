@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hyperporter.com/sitemap.xml

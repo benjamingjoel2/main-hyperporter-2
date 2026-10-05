@@ -22,7 +22,7 @@ if(sup){if(!ints.length&&!aut.length&&team<=1&&inq<=1)p='s';else p='i'}else{if(!
 var L={r:{s:['Public inquiry form link','CRM, proposal generator, magic links','Full Geotrax network access','Atlas AI, built in'],a:['Everything in Showcase','Full stage-based automation','Remove "Powered by Hyperporter"'],i:['Everything in Automations','Custom domain, included','A plan tailored to your business']},s:{s:['CRM access and quoting','Listed on Geotrax, at no cost','Atlas AI, built in'],i:['Everything in Showcase','WhatsApp and email integration','A plan tailored to your operation']}};
 var names={s:'Showcase',a:'Automations',i:'Enterprise'},price={s:['€0','forever'],a:['€49','per month'],i:['Custom','tailored to you']};
 var list=(sup?L.s:L.r)[p].slice();if(aut.length&&p!=='s'){list.push(aut.length+(aut.length===1?' automation: ':' automations: ')+aut.join(', '))}if(!sup&&p==='a'){ints.forEach(function(k){list.push((k==='whatsapp'?'WhatsApp':'Email')+' integration')})}
-var why=p==='s'?(sup?'Free for suppliers, with a CRM and quoting. It covers a small team and a light inquiry flow.':'Free, and enough for up to 20 inquiries a month with no automations or integrations.'):p==='a'?'Automations run your automations at every stage and fits up to 500 inquiries a month and teams of up to 15.':(sup?'Integrations, bigger teams and heavier volume are priced for your operation.':'At this volume, team size or with the 500+ inquiries a month, we tailor the plan to you.');
+var why=p==='s'?(sup?'Free for suppliers, with a CRM and quoting. It covers a small team and a light inquiry flow.':'Free, and enough for up to 20 inquiries a month with no automations or integrations.'):p==='a'?'Automations runs the stages for you, and fits up to 500 inquiries a month and teams of up to 15.':(sup?'Integrations, bigger teams and heavier volume are priced for your operation.':'At this volume, team size or with the 500+ inquiries a month, we tailor the plan to you.');
 if(p==='i'&&!sup)why='Your volume or team size is above Automations, so we tailor the plan to your business.';
 $('sp-name').textContent=names[p];$('sp-price').textContent=price[p][0];$('sp-per').textContent=price[p][1];$('sp-why').textContent=why;
 $('sp-list').innerHTML=list.map(function(t){return '<li></li>'}).join('');[].forEach.call($('sp-list').children,function(li,i){li.textContent=list[i]});
@@ -43,20 +43,14 @@ var ss=[].slice.call(document.querySelectorAll('.fl-s')),ps=[].slice.call(docume
 function set(i){bs.forEach(function(b,k){b.classList.toggle('on',k===i)});ss.forEach(function(s,k){s.classList.toggle('on',k===i)});var ph=bs[i].getAttribute('data-ph'),pi=order.indexOf(ph);
 ps.forEach(function(p,k){p.classList.toggle('on',k===pi);p.classList.toggle('done',k<pi)});if(n)n.textContent=(i+1)+'/'+bs.length}
 set(0);var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)set(+e.target.getAttribute('data-i'))})},{rootMargin:'-45% 0px -45% 0px'});bs.forEach(function(b){io.observe(b)})})();
-/* screen-by-screen paging on wheel (home): one gesture = one screen */
-(function(){if(!document.getElementById('flow'))return;var lock=false,last=0,t0=0,tgt=0;
+/* scroll stops for the flow prev/next controls */
+(function(){if(!document.getElementById('flow'))return;
 function stops(){var vh=innerHeight,y=scrollY,o=[];function top(e){return Math.round(e.getBoundingClientRect().top+y)}
 var h=document.querySelector('body>.hero');if(h)o.push(0);var fh=document.querySelector('.flow-h');if(fh)o.push(top(fh));
 [].forEach.call(document.querySelectorAll('.beat'),function(b){o.push(Math.round(top(b)+b.offsetHeight/2-vh/2))});
 [].forEach.call(document.querySelectorAll('body>section:not(.flow)'),function(s){o.push(top(s))});
 o.push(document.documentElement.scrollHeight-vh);return o.sort(function(a,b){return a-b})}
-window.hpStops=stops;addEventListener('wheel',function(e){return;if(e.ctrlKey)return;if(e.target&&e.target.closest&&e.target.closest('.mg-dr'))return;if(innerWidth<=900)return;
-var now=Date.now(),gap=now-last;last=now;
-if(lock){if(now-t0>700&&gap>320&&(Math.abs(scrollY-tgt)<4||now-t0>2200)){lock=false}else{e.preventDefault();return}}
-var dy=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);if(Math.abs(dy)<4){e.preventDefault();return}
-var s=stops(),y=scrollY,d=dy>0?1:-1,t=null;
-if(d>0){for(var i=0;i<s.length;i++){if(s[i]>y+8){t=s[i];break}}}else{for(var j=s.length-1;j>=0;j--){if(s[j]<y-8){t=s[j];break}}}
-if(t===null)return;e.preventDefault();lock=true;t0=now;tgt=t;scrollTo({top:t,behavior:'smooth'})},{passive:false});})();
+window.hpStops=stops})();
 /* flow rail: progress + manual jump */
 (function(){var r=document.getElementById('fl-rail'),f=document.getElementById('flow');if(!r||!f)return;var bt=[].slice.call(r.querySelectorAll('button')),bs=[].slice.call(document.querySelectorAll('.beat')),fill=document.getElementById('fl-fill');
 function upd(){var i=bs.map(function(b){return b.classList.contains('on')}).indexOf(true);if(i<0)i=0;
@@ -101,3 +95,18 @@ function calc(){tk=false;var m=innerHeight/2,best=0,bd=1e9;bs.forEach(function(b
 if(best===cur)return;cur=best;bs.forEach(function(b,k){b.classList.toggle('on',k===best)});ss.forEach(function(s,k){s.classList.toggle('on',k===best)});bg.forEach(function(s,k){s.classList.toggle('on',k===best)})}
 function q(){if(!tk){tk=true;requestAnimationFrame(calc)}}
 addEventListener('scroll',q,{passive:true});addEventListener('resize',q);addEventListener('load',q);calc()})();
+
+/* nav: mobile menu and dropdown trigger */
+(function(){var nav=document.getElementById('nav'),nm=document.getElementById('nm'),bg=nav&&nav.querySelector('.nav-burger');if(!nav||!nm||!bg)return;
+bg.removeAttribute('onclick');bg.setAttribute('aria-expanded','false');bg.setAttribute('aria-controls','nm');
+function set(v){nm.classList.toggle('open',v);nav.classList.toggle('menu-open',v);bg.setAttribute('aria-expanded',v?'true':'false')}
+bg.addEventListener('click',function(e){e.stopPropagation();set(!nm.classList.contains('open'))});
+nm.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+document.addEventListener('click',function(e){if(nm.classList.contains('open')&&!nm.contains(e.target)&&!bg.contains(e.target))set(false)});
+addEventListener('keydown',function(e){if(e.key==='Escape'&&nm.classList.contains('open')){set(false);bg.focus()}});
+addEventListener('resize',function(){if(innerWidth>820)set(false)});
+nav.querySelectorAll('.navgrp').forEach(function(g){var a=g.querySelector(':scope>a'),dd=g.querySelector('.dd');if(!a||!dd)return;a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+a.addEventListener('click',function(e){e.preventDefault();var on=!g.classList.contains('open');nav.querySelectorAll('.navgrp.open').forEach(function(x){if(x!==g){x.classList.remove('open');x.querySelector(':scope>a').setAttribute('aria-expanded','false')}});g.classList.toggle('open',on);a.setAttribute('aria-expanded',on?'true':'false')});
+g.addEventListener('mouseleave',function(){g.classList.remove('open');a.setAttribute('aria-expanded','false')})});
+document.addEventListener('click',function(e){if(!e.target.closest('.navgrp'))nav.querySelectorAll('.navgrp.open').forEach(function(x){x.classList.remove('open');x.querySelector(':scope>a').setAttribute('aria-expanded','false')})});
+addEventListener('keydown',function(e){if(e.key==='Escape')nav.querySelectorAll('.navgrp.open').forEach(function(x){x.classList.remove('open');x.querySelector(':scope>a').setAttribute('aria-expanded','false')})})})();

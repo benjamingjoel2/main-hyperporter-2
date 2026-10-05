@@ -1028,3 +1028,23 @@ body:has(#flow) .hero,body:has(#flow) .flow-h,body:has(#flow) .beat,body:has(#fl
 .fl-s.on .fig.fl-bare{transition-delay:0s!important}
 .fl-s[data-i="0"] .fig.fl-bare{transform:translate(-50%,0)!important;opacity:1!important}
 @media (max-width:900px){.fl-beats .beat .bm{display:none!important}}
+
+/* ===== FIXES: consistency and layout (site audit) ===== */
+/* Global nav stays fixed on every page; the home sub-nav sits beneath it */
+.nav{position:fixed!important}
+.subnav-in{top:72px!important}
+@media (max-width:820px){.subnav{display:none}}
+/* Final CTA on the home page: dark photo background behind the white headline */
+.final{background:#0b0b0d!important;color:#fff}
+.final .final-bg{display:block}
+.final p{color:rgba(255,255,255,.82)}
+/* Flow step with two cards: keep both inside the stage, stacked on phones */
+.fl-s .fig.fl-bare:has(>.fg+.fg){display:flex!important;flex-direction:row;gap:14px;align-items:stretch!important;height:auto!important;min-height:0!important}
+.fl-s .fig.fl-bare:has(>.fg+.fg)>.fg{width:calc(50% - 7px)!important;flex:1 1 0!important;max-height:none}
+@media (max-width:900px){.fl-s .fig.fl-bare:has(>.fg+.fg){flex-direction:column}.fl-s .fig.fl-bare:has(>.fg+.fg)>.fg{width:100%!important;flex:none!important}}
+/* Legibility floor for labels inside mock screens */
+.fg small,.fg .gs,.fg .gc{font-size:max(.8em,10.5px)}
+/* Dropdown opens on tap or click as well as hover */
+.navgrp.open .dd{display:block}
+/* Burger shows its open state */
+.nav.menu-open .nav-burger{background:var(--ink);color:#fff}
