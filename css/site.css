@@ -2099,8 +2099,6 @@ html:has(.vlist){scroll-padding-top:0!important}
 .gxi .ir{background:#fff}
 .gxi .ir-i .fig{height:auto!important;min-height:0!important;aspect-ratio:auto!important;flex:none!important;align-self:center!important;display:block!important}
 .gxi .ir-i .fig .fg{margin:0 auto!important}
-
-/* Integrations: "Learn more" button under the Geotrax card text, white pill like the Geotrax hero */
-.vc .vc-t .vc-cta{display:inline-flex!important;margin-top:20px;background:#fff!important;color:#141413!important;border:0!important;box-shadow:none!important;text-align:center!important}
-.vc .vc-t .vc-cta:hover{background:#f0f0f2!important}
-.vc .vc-t .vc-cta svg{width:16px;height:16px}
+.vc-cta{display:inline-flex;align-items:center;gap:8px;margin-top:26px;height:44px;padding:0 22px;border-radius:999px;background:#fff;color:#141413!important;font-size:15px;text-decoration:none}
+.vc-cta:hover{background:#f0f0f2}
+.vc .vc-t .vc-cta{text-align:center!important}
