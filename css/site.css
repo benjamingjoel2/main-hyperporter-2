@@ -2090,3 +2090,12 @@ html:has(.vlist){scroll-padding-top:0!important}
 /* Geotrax features: three cards as before, on a background that runs into the section below */
 .gxf{background:#fff!important;padding-bottom:0}
 .gxf .ovc{background:var(--alt)!important}
+
+/* Geotrax: grey background shared by the cards and the section below, tighter spacing, illustrations centred */
+.gxh .wrap{padding-bottom:clamp(28px,4vh,44px)!important}
+.gxf{background:#f5f5f7!important;padding:clamp(36px,4.5vw,56px) 0 0!important}
+.gxf .ovc{background:#fff!important}
+.gxi{background:#f5f5f7!important;padding-top:clamp(28px,3.5vw,44px)!important}
+.gxi .ir{background:#fff}
+.gxi .ir-i .fig{height:auto!important;min-height:0!important;aspect-ratio:auto!important;flex:none!important;align-self:center!important;display:block!important}
+.gxi .ir-i .fig .fg{margin:0 auto!important}
