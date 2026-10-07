@@ -2128,6 +2128,5 @@ html:has(.vlist){scroll-padding-top:0!important}
 .nav-mobile .nm-auth .nm-login{background:rgba(255,255,255,.12)!important;color:#fff!important}
 .nav-mobile .nm-auth .nm-signup{background:#fff!important;color:#000!important}
 
-/* Grounder hero: the capsule carries the dotted Grounder wordmark, as on the Grounder site */
-.gxh-collab .gxc .gxc-gw{display:block;height:12px;width:auto;color:#fff}
-@media(max-width:600px){.gxh-collab .gxc .gxc-gw{height:10px}}
+.gxh-collab .gxc svg.gxc-wm{display:block;height:13px;width:auto;color:#fff}
+@media(max-width:600px){.gxh-collab .gxc svg.gxc-wm{height:11px}}
