@@ -114,7 +114,7 @@ section{padding:96px 0;scroll-margin-top:84px}
 .cu h3{font-size:30px;margin-bottom:10px}.cu p{color:rgba(255,255,255,.88);margin:0 0 18px;max-width:460px}
 .cu ul{margin:0 0 20px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}.cu li{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
 
-/* geotrax */
+/* grounder */
 .gx{background:#07101f;color:#fff}
 .gx .eyebrow{color:rgba(255,255,255,.6)}.gx .lead{color:rgba(255,255,255,.8)}
 .gx .checks li{color:rgba(255,255,255,.82)}.gx .checks svg{color:#7ab8ff}
@@ -2052,7 +2052,7 @@ html:has(.vlist){scroll-padding-top:0!important}
 @media (max-width:560px){.hero.page h1.ch1{font-size:32px!important}}
 .vc-t h3{margin-top:0}
 
-/* Geotrax page */
+/* Grounder page */
 .gxh{position:relative;background:#02030a;color:#fff;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;flex-direction:column}
 .gxh-earth{position:relative;height:38vh;min-height:260px;flex:none;background:url(../assets/geotrax-earth.jpg) center top/min(1060px,135vw) auto no-repeat;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%)}
 .gxh .wrap{flex:1;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(8px,2vh,24px);padding-bottom:clamp(56px,8vh,96px)}
@@ -2087,11 +2087,11 @@ html:has(.vlist){scroll-padding-top:0!important}
 .gxh-earth{-webkit-mask-image:linear-gradient(0deg,#000 70%,transparent 100%)!important;mask-image:linear-gradient(0deg,#000 70%,transparent 100%)!important}
 .gxh-earth::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#02030a 0,rgba(2,3,10,0) 24%,rgba(2,3,10,0) 76%,#02030a 100%),linear-gradient(0deg,#02030a 0,rgba(2,3,10,0) 22%)}
 
-/* Geotrax features: three cards as before, on a background that runs into the section below */
+/* Grounder features: three cards as before, on a background that runs into the section below */
 .gxf{background:#fff!important;padding-bottom:0}
 .gxf .ovc{background:var(--alt)!important}
 
-/* Geotrax: grey background shared by the cards and the section below, tighter spacing, illustrations centred */
+/* Grounder: grey background shared by the cards and the section below, tighter spacing, illustrations centred */
 .gxh .wrap{padding-bottom:clamp(28px,4vh,44px)!important}
 .gxf{background:#f5f5f7!important;padding:clamp(36px,4.5vw,56px) 0 0!important}
 .gxf .ovc{background:#fff!important}
@@ -2103,7 +2103,7 @@ html:has(.vlist){scroll-padding-top:0!important}
 .vc-cta:hover{background:#f0f0f2}
 .vc .vc-t .vc-cta{text-align:center!important}
 
-/* Geotrax hero: collab lockup above the heading, two capsule logos with a plus between */
+/* Grounder hero: collab lockup above the heading, two capsule logos with a plus between */
 .gxh-collab{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 28px;flex-wrap:wrap}
 .gxh-collab .gxc{display:inline-flex;align-items:center;gap:9px;height:40px;padding:0 18px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .gxh-collab .gxc img{display:block;height:17px;width:auto}
@@ -2127,3 +2127,6 @@ html:has(.vlist){scroll-padding-top:0!important}
 .nav-mobile .nm-sub a.all{background:rgba(10,124,255,.28)!important;box-shadow:none!important;color:#7db8ff}
 .nav-mobile .nm-auth .nm-login{background:rgba(255,255,255,.12)!important;color:#fff!important}
 .nav-mobile .nm-auth .nm-signup{background:#fff!important;color:#000!important}
+
+.gxh-collab .gxc svg.gxc-wm{display:block;height:13px;width:auto;color:#fff}
+@media(max-width:600px){.gxh-collab .gxc svg.gxc-wm{height:11px}}
